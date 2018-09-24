@@ -31,7 +31,7 @@ T=table(gl123,gl123desc,mdiff,mglob,d_sorted,m_eur_gt_afr);
 
 %%
 close all
-id=38;
+id=1316;
 % figure;
 % cdfplot(double(GM12878_expr(id,:)));
 % hold on
