@@ -1,19 +1,5 @@
-load scExpr3GMs.mat
-m_eur_gt_afr=(mean(GM12878_expr,2)-mean(GM18502_expr,2))>0;
-mdiff=abs(mean(GM12878_expr,2)-mean(GM18502_expr,2));
-mglob=mean([GM12878_expr GM18502_expr],2);
-[d_sorted,idx]=sort(mdiff./mglob,'descend');
-
-
-%%
-GM12878_expr=GM12878_expr(idx,:);
-GM18502_expr=GM18502_expr(idx,:);
-GMmix_expr=GMmix_expr(idx,:);
-gl123=gl123(idx);
-gl123desc=gl123desc(idx);
-mglob=mglob(idx);
-mdiff=mdiff(idx);
-m_eur_gt_afr=m_eur_gt_afr(idx);
+sortby="diff_expr";
+i_common_code;
 
 %%
 idx=mglob>=prctile(mglob,50);
