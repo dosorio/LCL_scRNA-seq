@@ -2,12 +2,12 @@ sortby="none";
 i_common_code;
 
 targetg=["ABCC1","ADRBK1","AQP5","CDKN2A","CYP11B2","CYP26B1","ENPP1","GLIS1","GNB3","HIF1A","IL4","IRS1","LBP","MEF2A","P2RY2","PAWR","PRKG2","TBXA2R","TDP1","THBS2","TMEM121","TNFRSF4","TP53"]';
-
+targetg=string(textread('genelist_dna_repair.txt','%s'));
 %%
 close all
 for k=1:length(gl123)
     if ~ismember(gl123(k),targetg), continue; end
-    if mean(GM12878_expr(k,:))<0.3, continue; end
+    if median(GM12878_expr(k,:))<0.15, continue; end
     figure;
     subplot(2,2,1)
         hold on
@@ -16,7 +16,8 @@ for k=1:length(gl123)
         set(h1,'color','r','linewidth',2,'linestyle','-') 
         set(h2,'color','b','linewidth',2,'linestyle','-') 
         legend({'Eur','Afr'})
-        title(sprintf('%s (all cells)',gl123(k)));
+        [~,p]=kstest2(GM12878_expr(k,:)',GM18502_expr(k,:)');
+        title(sprintf('%s (p=%.2e)',gl123(k),p));
         xlabel(sprintf('%s',gl123desc(k)));
         box on
     subplot(2,2,2)
