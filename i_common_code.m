@@ -36,6 +36,9 @@ switch sortby
     case "none"
         
 end
+%%
+GMmix_afr=GMmix_expr(:,isafr==1);
+GMmix_eur=GMmix_expr(:,isafr==0);
 
 %%
 i1=(cellcycleGM12878=="G1");
