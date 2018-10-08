@@ -11,6 +11,8 @@ cellSum <- apply(data, 2, sum)
 scaleNum <- mean(cellSum)/cellSum
 scaleFactor <- t(kronecker( matrix(1, 1, dim(data)[1]), scaleNum))
 normData <- scaleFactor * data
+data<-normData
+
 outputName <- 'result_GSE65525'
 sig <- scVEGs(normData, pVal, pFlag, species, outputName)
 

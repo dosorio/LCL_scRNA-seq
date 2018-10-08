@@ -1,6 +1,6 @@
 sortby="expr_level";
 i_common_code;
-close all
+
 %    case "EUR"
 X=GM12878_expr; x=cellcycleGM12878; x1=i1; x2=i2; x3=i3;
 A1=X(:,x1); [~,i]=sort(sum(A1,1),'descend'); A1=A1(:,i);
@@ -13,8 +13,8 @@ B2=X(:,x2); [~,i]=sort(sum(B2,1),'descend'); B2=B2(:,i);
 B3=X(:,x3); [~,i]=sort(sum(B3,1),'descend'); B3=B3(:,i);
 
 %%
-startgid=1;
-viewgnum=200;
+startgid=401;
+viewgnum=500;
 
 h=figure;
 % XA=[A1 A3 A2 B1 B3 B2];

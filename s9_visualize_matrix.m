@@ -1,7 +1,7 @@
 sortby="expr_level";
 i_common_code;
 
-ethid="EUR";
+ethid="AFR";
 switch ethid
     case "EUR"
 X=GM12878_expr; x=cellcycleGM12878; x1=i1; x2=i2; x3=i3;
@@ -36,7 +36,7 @@ A2=X(:,x2); [~,i]=sort(sum(A2,1),'descend'); A2=A2(:,i);
 A3=X(:,x3); [~,i]=sort(sum(A3,1),'descend'); A3=A3(:,i);
 
 XA=[A1 A3 A2];
-imagesc(log10(1+XA(201:300,:)))
+imagesc(log10(1+XA(1:200,:)))
 % vline(find(x=="G2M", 1 ),'y-')
 % vline(find(x=="S", 1 ),'y-')
 vline(size(A1,2),'y-');
@@ -46,7 +46,7 @@ colorbar;
 xlabel('Cell')
 ylabel('Gene')
 dt = datacursormode;
-dt.UpdateFcn = {@myupdatefcn,gl123,gl123desc,200};
+dt.UpdateFcn = {@myupdatefcn,gl123,gl123desc,0};
 
 
 function txt = myupdatefcn(~,event_obj,g,gd,id)

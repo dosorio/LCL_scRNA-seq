@@ -45,7 +45,7 @@ BMC Genomics 2016, 17(Suppl 7):508
 %}
 
 %%
-%{
+
 v1=log10(std(X,0,2)./mean(X,2))-(-0.5*log10(mean(X,2)));
 v2=log10(std(Y,0,2)./mean(Y,2))-(-0.5*log10(mean(Y,2)));
 
@@ -57,5 +57,5 @@ xlabel('EUR residual cv')
 ylabel('AFR residual cv')
 dt = datacursormode;
 dt.UpdateFcn = {@i_myupdatefcn,gl123};
-%}
+
 
