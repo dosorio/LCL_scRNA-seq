@@ -30,6 +30,7 @@ plot(i,j,'-rs');
 grid on
 xlabel('Mean')
 ylabel('CV')
+legend({'genes','Poisson'})
 
 % loglog(mean(Y,2),std(Y,[],2)./mean(Y,2),'.')
 % v=log10(cv)-(-0.5*log10(u));
