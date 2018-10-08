@@ -1,4 +1,4 @@
-% load dataGSE65525
+load dataGSE65525
 Xori=table2array(data(:,2:end));
 scaleFactor = mean(sum(Xori))./sum(Xori);
 X=Xori.*scaleFactor;
@@ -18,13 +18,42 @@ xx=log10(xdata);
 %  ydata <- ydata[is.na(ydata) != "TRUE"]
 % fitLoc <- locfit.robust(ydata ~ lp(log10(xdata), nn = .2))
 
-yy2 = smooth(log10(xdata),ydata,0.1,'rloess');
+% takes 116 seconds
+% tic
+% ysmooth = smooth(xx,ydata,0.1,'rloess');
+% toc
+
+
+% takes 3 seconds
+tic
+ysmooth = malowess(xx,ydata);
+toc
+
+
+[fitLoc]=fit(xx,ydata,'smoothingspline');
 
 %%
 figure;
-scatter(log10(xdata),ydata);
+scatter(xx,ydata);
 hold on
-scatter(log10(xdata),yy2)
+scatter(xx,ysmooth)
+% scatter(xx,fitLoc(xx))
 
 
-xSeq=min(log10(xdata)):0.005:max(log10(xdata));
+
+%%
+xSeq=min(xx):0.005:max(xx);
+gapNum=zeros(length(xSeq),1);
+for k=1:length(xSeq)
+    gapNum(k)=sum(xx>= xSeq(k) - 0.05 & xx < xSeq(k) + 0.05);    
+end
+
+  cdx = find (gapNum > m*0.005);
+  xSeq = 10.^xSeq;
+  ySeq = fitLoc(log10(xSeq));
+
+  %%
+figure;
+scatter(xx,ydata);
+hold on
+scatter(log10(xSeq),ySeq)
