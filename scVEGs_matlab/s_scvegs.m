@@ -51,7 +51,21 @@ end
   cdx = find (gapNum > m*0.005);
   xSeq = 10.^xSeq;
   ySeq = fitLoc(log10(xSeq));
-
+  
+  % Added by Daniel
+  yDiff = diff(ySeq);
+  ix = find((yDiff > 0) & (log10(xSeq(2:length(xSeq)))>0)');
+  if size(ix,1) > 0
+     ix = size(ySeq,1) -1 ;
+     xSeq_all = 10^(min(log10(xx)):0.001:max(log10(xx)));
+     xSeq = xSeq(cdx(1):(ix(1)+1));
+     ySeq = ySeq(cdx(1):(ix(1)+1));
+     
+     b = 1;
+     a = 0;
+     % This is the nls function in matlab
+     %lsqnonlin()
+  end
   %%
 figure;
 scatter(xx,ydata);
