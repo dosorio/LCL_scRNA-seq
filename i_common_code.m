@@ -38,7 +38,7 @@ switch sortby
 end
 %%
 GMmix_afr=GMmix_expr(:,isafr==1);
-GMmix_eur=GMmix_expr(:,isafr==0);
+GMmix_eur=GMmix_expr(:,isafr==-1);
 
 %%
 i1=(cellcycleGM12878=="G1");
@@ -47,3 +47,17 @@ i3=(cellcycleGM12878=="S");
 j1=(cellcycleGM18502=="G1");
 j2=(cellcycleGM18502=="G2M");
 j3=(cellcycleGM18502=="S");
+
+assert(size(GMmix_eur,2)==size(mixcellcycleGM12878,1))
+assert(size(GMmix_afr,2)==size(mixcellcycleGM18502,1))
+
+GMmix_afr_G1=GMmix_afr(:,mixcellcycleGM18502=="G1");
+GMmix_afr_G2M=GMmix_afr(:,mixcellcycleGM18502=="G2M");
+GMmix_afr_S=GMmix_afr(:,mixcellcycleGM18502=="S");
+
+GMmix_eur_G1=GMmix_eur(:,mixcellcycleGM12878=="G1");
+GMmix_eur_G2M=GMmix_eur(:,mixcellcycleGM12878=="G2M");
+GMmix_eur_S=GMmix_eur(:,mixcellcycleGM12878=="S");
+
+
+

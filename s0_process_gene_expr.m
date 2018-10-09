@@ -20,7 +20,7 @@ GM12878_expr=uint16(GM12878_expr);
 GM18502_expr=uint16(GM18502_expr);
 GMmix_expr=uint16(GMmix_expr);
 %%
-save scExpr3GMs GM12878_expr GM18502_expr GMmix_expr gl123
+% save scExpr3GMs GM12878_expr GM18502_expr GMmix_expr gl123
 
 
 

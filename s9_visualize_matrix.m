@@ -49,6 +49,37 @@ dt = datacursormode;
 dt.UpdateFcn = {@myupdatefcn,gl123,gl123desc,0};
 
 
+%%
+
+% ethid="EUR"
+switch ethid
+    case "EUR"
+        [~,i]=sort(sum(GMmix_eur_G1,1),'descend'); A1=GMmix_eur_G1(:,i);
+        [~,i]=sort(sum(GMmix_eur_G2M,1),'descend'); A2=GMmix_eur_G2M(:,i);
+        [~,i]=sort(sum(GMmix_eur_S,1),'descend'); A3=GMmix_eur_S(:,i);
+    case "AFR"
+        [~,i]=sort(sum(GMmix_afr_G1,1),'descend'); A1=GMmix_afr_G1(:,i);
+        [~,i]=sort(sum(GMmix_afr_G2M,1),'descend'); A2=GMmix_afr_G2M(:,i);
+        [~,i]=sort(sum(GMmix_afr_S,1),'descend'); A3=GMmix_afr_S(:,i);
+end
+
+figure;
+XA=[A1 A3 A2];
+imagesc(log10(1+XA(1:200,:)))
+vline(size(A1,2),'y-');
+vline(size(A1,2)+size(A3,2),'y-');
+title('G1  |  S  |   G2/M')
+colorbar;
+xlabel('Cell')
+ylabel('Gene')
+dt = datacursormode;
+dt.UpdateFcn = {@myupdatefcn,gl123,gl123desc,0};
+
+
+
+
+
+
 function txt = myupdatefcn(~,event_obj,g,gd,id)
 % Customizes text of data tips
 pos = event_obj.Position;
