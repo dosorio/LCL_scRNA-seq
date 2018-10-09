@@ -3,4 +3,5 @@
 *.lnk
 *.asv
 Thumbs.db
+.Rhistory
 

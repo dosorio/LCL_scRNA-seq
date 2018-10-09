@@ -64,6 +64,7 @@ scVEGs <- function(data, pVal, pFlag, species, tmpName) {
   cdx <- which(gapNum > m*0.005)
   xSeq <- 10 ^ xSeq
   ySeq <- predict(fitLoc,log10(xSeq))
+  
   yDiff <- diff(ySeq)
   ix <- which(yDiff > 0 & log10(xSeq[-1]) > 0)
   if(length(ix) == 0)
