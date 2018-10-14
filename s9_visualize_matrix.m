@@ -1,7 +1,7 @@
 sortby="expr_level";
 i_common_code;
 
-ethid="AFR";
+ethid="EUR";
 switch ethid
     case "EUR"
 X=GM12878_expr; x=cellcycleGM12878; x1=i1; x2=i2; x3=i3;
