@@ -58,4 +58,44 @@ ylabel('AFR residual cv')
 dt = datacursormode;
 dt.UpdateFcn = {@i_myupdatefcn,gl123};
 
+%%
+
+close all
+u=mean(X,2);
+cv=std(X,0,2)./u;
+v=var(X,0,2);
+i=u>0&v>0;
+
+x=log10(u(i));
+y=log10(v(i));
+plot(x,y,'o');
+
+
+p1 = polyfit(x,y,1);
+p2 = polyfit(x,y,2);
+p3 = polyfit(x,y,3);
+p4 = polyfit(x,y,4);
+p5 = polyfit(x,y,5);
+
+
+v1 = polyval(p1,x);
+v2 = polyval(p2,x);
+v3 = polyval(p3,x);
+v4 = polyval(p4,x);
+v5 = polyval(p5,x);
+
+y1=y./v1;
+y2=y./v2;
+y3=y./v3;
+y4=y./v4;
+y5=y./v5;
+
+[r1,p1]=corr(x,y1,'type','k')
+[r2,p2]=corr(x,y2,'type','k')
+[r3,p3]=corr(x,y3,'type','k')
+[r4,p4]=corr(x,y4,'type','k')
+[r5,p5]=corr(x,y5,'type','k')
+
+
+
 
