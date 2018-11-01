@@ -5,13 +5,19 @@ i_common_code;
 X=GM12878_expr(:,cellcycleGM12878=="G1");
 Y=GM18502_expr(:,cellcycleGM18502=="G1");
 % Z=GM12878_expr(:,cellcycleGM12878=="S");
+u=mean(X,2);
+cv=std(X,0,2)./u;
 
 %%
 
 
 figure;
-u=mean(X,2);
-cv=std(X,0,2)./u;
+
+
+sp=zeros(size(X,1),1);
+for k=1:size(X,1)
+    sp(k)=i_sparseness(X(k,:));
+end
 
 % idx=~isnan(cv);
 % gl123x=gl123(idx);
@@ -19,6 +25,12 @@ cv=std(X,0,2)./u;
 % u=u(idx);
 % cv=cv(idx);
 
+%%
+figure;
+loglog(u,sp,'o');
+
+%%
+figure;
 loglog(u,cv,'o');
 hold on
 i=1e-4:1e2;
