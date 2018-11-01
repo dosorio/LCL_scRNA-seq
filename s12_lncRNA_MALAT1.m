@@ -1,3 +1,5 @@
+sortby="expr_level";
+i_common_code;
 % We propose that non-linear sequence homology—in which the relative abundance of a set of protein-binding motifs is conserved, but the sequential relationships between them are not—is prevalent in lncRNAs. To quantify non-linear homology, we introduce SEEKR,
 
 % TESTING: lncRNA with non-linear homology should co-expressed

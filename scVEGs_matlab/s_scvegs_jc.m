@@ -6,12 +6,12 @@ X=Xori.*scaleFactor;
 m=size(X,1);
 xdata = mean(X,2);
 cv=std(X,1,2)./xdata;
-ydata = log10(cv);
+lgydata = log10(cv);
 
-xdata=xdata(~isnan(ydata));
-ydata=ydata(~isnan(ydata));
+xdata=xdata(~isnan(lgydata));
 
-xx=log10(xdata);
+lgydata=lgydata(~isnan(lgydata));
+lgxdata=log10(xdata);
 
 %%
 %  xdata <- xdata[is.na(ydata) != "TRUE"]
@@ -26,17 +26,39 @@ xx=log10(xdata);
 
 % takes 3 seconds
 tic
-ysmooth = malowess(xx,ydata);
+ysmooth = malowess(lgxdata,lgydata);
 toc
 
 figure;
-scatter(xx,ydata);
+scatter(lgxdata,lgydata);
 hold on
-scatter(xx,ysmooth)
+[~,idx]=sort(lgxdata);
+plot(sort(lgxdata),ysmooth(idx),'-r');
+% scatter(xx,ysmooth)
 % scatter(xx,fitLoc(xx))
 
+%%
+
+[xData, yData] = prepareCurveData( 10.^lgxdata, lgydata );
+ft = fittype( '0.5*log10(b/x+a)', 'independent', 'x', 'dependent', 'y' );
+fo = fitoptions( 'Method', 'NonlinearLeastSquares' );
+%opts.Display = 'Off';
+%opts.StartPoint = [0.6 1.84];
+% Fit model to data.
+[fr] = fit( xData, yData, ft, fo );
+
+ab=coeffvalues(fr);
+%i=1e-4:0.03:2.9e2;
+i1=-4:0.05:2;
+i2=10.^i1;
+j=(0.5*log10(ab(2)./i2+ab(1)));
+plot(i1,j,'-g');
+
+
+return;
 
 %%
+
 [fitLoc]=fit(xx,ydata,'poly2');
 %[fitLoc]=fit(xx,ydata,'smoothingspline');
 xSeq=min(xx):0.005:max(xx);
