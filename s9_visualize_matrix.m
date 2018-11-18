@@ -9,6 +9,15 @@ X=GM12878_expr; x=cellcycleGM12878; x1=i1; x2=i2; x3=i3;
 X=GM18502_expr; x=cellcycleGM18502; x1=j1; x2=j2; x3=j3;
 end
 
+
+% a=gl123; a(7568)="TT";
+% i=find(extractBefore(a,3)=="IG");   % find all IG genes
+% X(i,:)=[];
+% gl123(i)=[];
+% gl123desc(i)=[];
+
+
+
 %%
 % figure;
 % hold on
@@ -77,15 +86,38 @@ dt.UpdateFcn = {@myupdatefcn,gl123,gl123desc,0};
 
 
 
+%%
+figure; 
+subplot(2,1,1)
+i=gl123=='RPS11';
+stem(GMmix_eur_G1(i,:),'marker','none');
+title([gl123(i) 'Ribosomal protein S11'])
+ylim([0 700])
+Entropy(GMmix_eur_G1(i,:)')
+mean(GMmix_eur_G1(i,:))
 
+subplot(2,1,2)
+i=gl123=='IGHG1';
+stem(GMmix_eur_G1(i,:),'marker','none');
+title([gl123(i) 'Immunoglobulin Heavy Constant Gamma 1'])
+ylim([0 700])
+Entropy(GMmix_eur_G1(i,:)')
+mean(GMmix_eur_G1(i,:))
+%%
+figure;
+i=gl123=='MS4A1';
+stem(GMmix_eur_G1(i,:),'marker','none');
+title([gl123(i) gl123desc(i)])
+Entropy(GMmix_eur_G1(i,:)')
+web('https://dice-database.org/cells/B_CELL_NAIVE')
 
-
+%%
 function txt = myupdatefcn(~,event_obj,g,gd,id)
 % Customizes text of data tips
 pos = event_obj.Position;
 % idx = event_obj.DataIndex;
 % i_plotsiglegene(idx,g);
 num2str(pos(2)+id)
-txt = {[char(g(pos(2)+id)) ' - ' char(gd(pos(2)+id))]};
+txt = {[num2str(pos(2)+id) ' - ' char(g(pos(2)+id)) ' - ' char(gd(pos(2)+id))]};
 % txt={num2str(pos(2))}
 end

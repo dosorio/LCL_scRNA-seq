@@ -5,8 +5,16 @@ i_common_code;
 X=GM12878_expr(:,cellcycleGM12878=="G1");
 % Y=GM18502_expr(:,cellcycleGM18502=="G1");
 % Z=GM12878_expr(:,cellcycleGM12878=="S");
+
 u=mean(X,2);
 cv=std(X,0,2)./u;
+
+% gini=zeros(size(X,1),1);
+% rcv=zeros(size(X,1),1);
+% for k=1:size(X,1)
+%     gini(k)=ginicoeff(X(k,:));
+%     rcv(k)=iqr(X(k,:))/median(X(k,:));
+% end
 
 %%
 %close all

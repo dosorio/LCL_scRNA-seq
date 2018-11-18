@@ -11,23 +11,23 @@ cv=std(X,0,2)./u;
 %%
 
 
-figure;
-
-
-sp=zeros(size(X,1),1);
-for k=1:size(X,1)
-    sp(k)=i_sparseness(X(k,:));
-end
-
-% idx=~isnan(cv);
-% gl123x=gl123(idx);
-% gl123descx=gl123desc(idx);
-% u=u(idx);
-% cv=cv(idx);
-
-%%
-figure;
-loglog(u,sp,'o');
+% figure;
+% 
+% 
+% sp=zeros(size(X,1),1);
+% for k=1:size(X,1)
+%     sp(k)=i_sparseness(X(k,:));
+% end
+% 
+% % idx=~isnan(cv);
+% % gl123x=gl123(idx);
+% % gl123descx=gl123desc(idx);
+% % u=u(idx);
+% % cv=cv(idx);
+% 
+% %
+% figure;
+% loglog(u,sp,'o');
 
 %%
 figure;
