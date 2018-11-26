@@ -105,7 +105,9 @@ Entropy(GMmix_eur_G1(i,:)')
 mean(GMmix_eur_G1(i,:))
 %%
 figure;
-i=gl123=='MS4A1';
+i=gl123=='MS4A1';   % CD20
+i=gl123=='ERAP2';
+i=gl123=='IGHV1-69';
 stem(GMmix_eur_G1(i,:),'marker','none');
 title([gl123(i) gl123desc(i)])
 Entropy(GMmix_eur_G1(i,:)')
