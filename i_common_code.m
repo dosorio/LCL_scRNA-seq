@@ -35,6 +35,8 @@ switch sortby
        
     case "none"
         
+    otherwise
+        
 end
 %%
 GMmix_afr=GMmix_expr(:,isafr==1);

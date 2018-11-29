@@ -93,14 +93,14 @@ ylim([0.3 150])
 % j=10.^(0.5*log10(aabb(2,1)./i+aabb(1,2)));
 % plot(i,j,'--r');
 
-function txt = myupdatefcn(~,event_obj,g)
-% Customizes text of data tips
-pos = event_obj.Position;
-idx = event_obj.DataIndex;
-% i_plotsiglegene(idx,g);
-num2str(pos(1))
-num2str(pos(2))
-txt = {char(g(idx))};
-% txt={num2str(pos(2))}
-end
+% function txt = myupdatefcn(~,event_obj,g)
+% % Customizes text of data tips
+% pos = event_obj.Position;
+% idx = event_obj.DataIndex;
+% % i_plotsiglegene(idx,g);
+% num2str(pos(1))
+% num2str(pos(2))
+% txt = {char(g(idx))};
+% % txt={num2str(pos(2))}
+% end
 
