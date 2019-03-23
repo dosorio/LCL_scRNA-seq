@@ -15,7 +15,7 @@ close all;
 
 THRESHOLD = 0.28; % change the threshold depending on the data.
 % generate the data
-data = GenerateData(1);
+data = GenerateData(2);
 % break the block matrix structure
 data = data(3:14,:);
 figure,plot(data(:,1), data(:,2),'r+'),title('Original Data Points'); grid on;shg
