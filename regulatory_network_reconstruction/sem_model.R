@@ -30,7 +30,7 @@ model <- c(
 )
 
 # Fitting the model
-out <- lavaan(model = model, data = data.frame(gValues), std.lv=TRUE, auto.var=TRUE, auto.cov.lv.x=TRUE)
+out <- lavaan(model = model, data = data.frame(gValues), std.lv=TRUE, auto.var=TRUE, auto.cov.lv.x=TRUE, se="bootstrap")
 
 # Result
 summary(out, fit.measures = TRUE)
